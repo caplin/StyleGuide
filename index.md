@@ -9,7 +9,7 @@ Caplin Style Guide for JavaScript
 
 A javascript style guide drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/)) but favouring explicitness and minimisation of potential for error over terseness.
 
-As with any style guide, some of these rules are debateable. Having a consistent style throughout the codebase is more valuable than getting any one rule 'right' or 'wrong'.
+As with any style guide, some of these rules are debateable. Having a consistent style throughout the codebase is more valuable than getting any one rule 'right'.
 
 > Break any of these rules sooner than say anything outright barbarous.
 >
@@ -18,12 +18,12 @@ As with any style guide, some of these rules are debateable. Having a consistent
 
 Religion
 --------
-Tabs not spaces. So it is written, so shall it be done.
+Tabs not spaces. So it is written, so let it be done.
 
 
 Semicolons
 ----------
-Semicolons after every statement.  Failing to put in semicolons can cause bugs:
+Semicolons after every statement except control flow ending with curly brackets (if/while/etc).  Failing to put in semicolons can cause bugs:
 
 ```javascript
 // DO NOT DO THIS - missing semicolon makes it all go bad.
@@ -37,7 +37,7 @@ var myFunc = function() {
 })();
 ```
 
-This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  TL;DR: always use semicolons.
+This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.
 
 
 Braces
