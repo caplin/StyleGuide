@@ -1,4 +1,1 @@
-StyleGuide
-==========
-
-A javascript style guide
+The style guide is [here](http://caplin.github.io/StyleGuide).
