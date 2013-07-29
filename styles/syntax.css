@@ -2,6 +2,8 @@
   border: 2px solid #ddd;
   background-color: #f8f8f8;
   padding: 4px;
+  margin-top: 6px;
+  overflow: auto;
 }
 
 .highlight pre {
