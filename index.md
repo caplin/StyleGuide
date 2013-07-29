@@ -1,7 +1,7 @@
 Caplin Style Guide for JS
 ========================
 
-A javascript style guide based on drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), but favouring explicitness and minimisation of potential for error over terseness.
+A javascript style guide based on drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/) ) but favouring explicitness and minimisation of potential for error over terseness.
 
 
 Religion
