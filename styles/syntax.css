@@ -1,9 +1,9 @@
 .highlight {
-  border: 2px solid #ddd;
-  background-color: #f8f8f8;
   padding: 4px;
   margin-top: 6px;
   overflow: auto;
+  border: 2px solid #ddd;
+  background-color: #f8f8f8;
 }
 
 .highlight pre {
@@ -14,8 +14,14 @@
   font-family: "Deja Vu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", monospace;
 }
 
-.highlight pre code {
+code {
   margin: 0;
+  border: 2px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+.highlight code {
+  border: none;
 }
 
 .javascript .hll { background-color: #ffffcc }
