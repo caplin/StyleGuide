@@ -93,7 +93,7 @@ if (bob != null) {
 ```javascript
 if (bob) {
   // This relies on truthiness.
-  console.log('this code is executed if bob is not null, undefined, 0, false, NaN or the empty string').
+  console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string').
 }
 ```
 
