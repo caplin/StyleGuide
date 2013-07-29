@@ -211,4 +211,6 @@ Avoid nested closures, they quickly become extremely hard to follow.
 
 General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
 
+As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5.
+
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
