@@ -52,29 +52,10 @@ if (true)
 ```
 
 
-Naming
-------
+Primitives
+----------
 
-lowerCamelCase for variables and properties.  UpperCamelCase for classes. ALL_CAPS_WITH_UNDERSCORES for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
-
-Avoid uncommon abbreviations or single character names.  Single character loop counters are acceptable, but always consider if you can be more descriptive.
-
-Avoid meaningless or generic names like 'obj', 'temp', 'data'.  Type names are better than generic names but are still bad and should be avoided; 'func', 'string', 'str', 'num'.
-
-Names should be in a single language for the entire codebase.  For us, this is English (although USAian or UKian spelling variants are acceptable outside of the public API).
-
-We do not use hungarian notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
-
-Anything that could be referenced from code in another file but that should not be (e.g. private member variables) must indicate this by having their name prepended with an underscore.
-
-```javascript
-funtion MyClass() {
-  this.publicMember = 23;
-  this._privateMember = 44;
-}
-```
-
-If your method has a name beginning with 'get', it should not usually modify any state.  An exception is for values that are lazily initialised.
+Use the Math methods for rounding.  There are short forms (eg. real|0), but they are less descriptive.
 
 
 Object / Array
@@ -140,12 +121,6 @@ This does not create a new object, and it makes your code clearer.
 It is acceptable to use coercion when appending to a string (e.g. for logging).
 
 
-Numbers
--------
-
-Use the Math methods for rounding.  There are short forms (eg. real|0), but they are less descriptive.
-
-
 Returns
 -------
 
@@ -158,6 +133,31 @@ Guarded returns at the top of a function are fine.  Other than that, balance the
 Closures
 -------
 Avoid nested closures, they quickly become extremely hard to follow.
+
+
+Naming
+------
+
+lowerCamelCase for variables and properties.  UpperCamelCase for classes. ALL_CAPS_WITH_UNDERSCORES for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
+
+Avoid uncommon abbreviations or single character names.  Single character loop counters are acceptable, but always consider if you can be more descriptive.
+
+Avoid meaningless or generic names like 'obj', 'temp', 'data'.  Type names are better than generic names but are still bad and should be avoided; 'func', 'string', 'str', 'num'.
+
+Names should be in a single language for the entire codebase.  For us, this is English (although USAian or UKian spelling variants are acceptable outside of the public API).
+
+We do not use hungarian notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
+
+Anything that could be referenced from code in another file but that should not be (e.g. private member variables) must indicate this by having their name prepended with an underscore.
+
+```javascript
+funtion MyClass() {
+  this.publicMember = 23;
+  this._privateMember = 44;
+}
+```
+
+If your method has a name beginning with 'get', it should not usually modify any state.  An exception is for values that are lazily initialised.
 
 
 Constructors
