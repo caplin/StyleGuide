@@ -10,3 +10,19 @@ body {
   margin-top: 100px;
   text-align: justify;
 }
+
+blockquote {
+    border-left: 4px solid #FF3232;
+    padding-left:  20px;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+
+blockquote p {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote p:last-child {
+  text-align: right;
+}
