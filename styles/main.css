@@ -5,8 +5,8 @@ body {
   margin: 0px auto;
   max-width: 850px;
   font-size: 14pt;
-  font-family: 'Bookman Old Style', serif;
+  font-family: 'Bookman Old Style', Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
   line-height: 1.6em;
-  margin-top: 40px;
+  margin-top: 100px;
   text-align: justify;
 }
