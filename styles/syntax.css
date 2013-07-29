@@ -1,3 +1,7 @@
+.javascript {
+  border: 1px solid black;
+}
+
 .javascript .hll { background-color: #ffffcc }
 .javascript  { background: #f8f8f8; }
 .javascript .c { color: #408080; font-style: italic } /* Comment */
