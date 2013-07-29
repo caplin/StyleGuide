@@ -1,4 +1,4 @@
-Caplin StyleGuide for JS
+Caplin Style Guide for JS
 ========================
 
 A javascript style guide based on drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), but favouring explicitness and minimisation of potential for error over terseness.
@@ -80,6 +80,7 @@ Don't use the Array constructor to create an array containing particular values.
 var x = new Array("this", "is", "wrong");
 var y = ["this", "is", "right"];
 ```
+This is because the Array constructor behaves differently when given a single numeric argument to other situations.
 
 Short declarations can be on a single line, otherwise start a new line for each item.  When split over multiple lines, commas go at the end of the line not the beginning.
 
@@ -90,7 +91,7 @@ Conditionals
 ------------
 It's easy to assume that the behaviour of ```if (x)``` is the same as ```if (x == true)```.  This is NOT TRUE.  There are numerous differences.  In fact, the behaviour is the same as ```if (Boolean(x)) ```, a relationship often referred to as 'truthiness'.
 
-The truthiness rules are not known to all developers, and developers relying on them when they were not 100% sure of what types a particular variable can take has caused bugs in our codebase.  Worse, when you look at code that depends on truthiness, it is not possible to know if the developer who wrote that code knew exactly what they were doing or not.
+The truthiness rules are not well known by all developers, and developers relying on them when they were not 100% sure of what types a particular variable can take has caused bugs in our codebase.  Worse, when you look at code that depends on truthiness, it is not possible to know if the developer who wrote that code knew exactly what they were doing or not.
 
 It is better to be explicit in what you check.
 
@@ -113,7 +114,7 @@ If you are completely sure that a variable is a boolean (either it has not be pa
 
 Complex conditionals should be assigned to a descriptive variable.
 
-A common source of errors is missing an else in a complex set of conditionals.  What's worse is that it's difficult to tell from looking at the code afterwards whether the author intended the behaviour or not.  When writing nested if statements, inner if's or run-on ifs should always have else clauses, with a comment if they are empty.
+A common source of errors occurs when a developer writes a chain of if/else if/else if's and leaves out an else, or they write a bunch of nested ifs, and one of the inner ifs misses an else.  What's worse is that it's difficult to tell from looking at the code afterwards whether the author intended the behaviour or not.  When writing nested if statements, inner if's or run-on ifs should always have else clauses with a comment if they are empty.
 
 
 Coercion
@@ -174,13 +175,13 @@ General library code must not modify the prototype of other objects.
 It is acceptable for application code or shim libraries to do this, but it's a step that should be taken with great trepidation.
 
 
-Public API Methods
-------------------
-Methods that may be called by others should start by checking their preconditions (e.g. types of arguments, etc.) and throwing appropriate Errors if the preconditions are not met.
-
-Use JSDoc comments for all methods that are part of the public API.
+Public API
+----------
+Use JSDoc comments for anything part of the public API (i.e. may be used by code outside our own codebase).
 
 Your JSDoc comments should make a point of describing what happens if any of the arguments are null/undefined when the function is called, whether the function can ever return null/undefined, and under which circumstances errors will be thrown.
+
+Methods that are part of the public API should start by checking their preconditions (e.g. types of arguments, etc.) and throwing appropriate Errors if the preconditions are not met.
 
 
 Errors
@@ -188,4 +189,22 @@ Errors
 Throw only objects that are instances of the generic ```Error``` type.
 
 Custom Error objects are fine, but must inherit from ```Error```, and set the name property.  Where appropriate reuse the standard Error types, e.g. TypeError, RangeError.
+
+
+Hygeine
+--------
+
+Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.
+
+Use jsHint with the provided settings.
+
+Keep your lines, methods, classes and files short (aim for <100 characters, <10 lines, <200 lines).
+
+Write your code to be testable and test it!
+
+Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
+
+Do not use globals.
+
+Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
 
