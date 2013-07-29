@@ -181,9 +181,9 @@ Methods that are part of the public API should start by checking their precondit
 
 Errors
 ------
-Throw only objects that are instances of the generic ```Error``` type.
+Throw only objects that are instances of the generic `Error` type.
 
-Custom Error objects are fine, but must inherit from ```Error```, and set the name property.  Where appropriate reuse the standard Error types, e.g. TypeError, RangeError.
+Custom Error objects are fine, but must inherit from `Error`, and set the name property.  Where appropriate reuse the standard Error types, e.g. TypeError, RangeError.
 
 
 General Hygeine
@@ -197,7 +197,7 @@ Do not check in commented out code.  Remembering old versions of code is what th
 
 Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
 
-Use jsHint with the [provided settings](.jshintrc).
+Use jsHint with the [provided settings](https://raw.github.com/caplin/StyleGuide/gh-pages/.jshintrc).
 
 Write your code to be testable and test it! Writing code that receives objects it needs rather than creating them can make the code easier to test.  If you find yourself writing 'new', double check that your code is as testable as it should be.
 
