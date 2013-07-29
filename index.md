@@ -38,6 +38,7 @@ Braces
 Opening braces go on the same line as the statement:
 
 *Right:*
+
 ```javascript
 if (true) {
   console.log('winning');
@@ -45,6 +46,7 @@ if (true) {
 ```
 
 *Wrong:*
+
 ```javascript
 if (true)
 {
