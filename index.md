@@ -7,30 +7,31 @@ layout: main
 Caplin Style Guide for JS
 ========================
 
-A javascript style guide based on drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/) ) but favouring explicitness and minimisation of potential for error over terseness.
+A javascript style guide drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/) ) but favouring explicitness and minimisation of potential for error over terseness.
 
 
 Religion
 --------
-Tabs not spaces.
+Tabs not spaces. So it is written, so shall it be done.
 
 
 Semicolons
 ----------
-Semicolons everywhere they should be.  Failing to put in semicolons can cause bugs.
+Semicolons everywhere they should be.  Failing to put in semicolons can cause bugs:
 
 ```javascript
 // DO NOT DO THIS - missing semicolon makes it all go bad.
 
 var myFunc = function() {
-  // myFunc code codes here.
+  // myFunc definition code codes here.
 }
 
 (function() {
   // this code should be executed immediately.
 })();
 ```
-This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the immediately executed function as a disregarded parameter to myFunc, then the result is considered to be a function and attempted to be invoked.  TL;DR: always use semicolons.
+
+This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  TL;DR: always use semicolons.
 
 
 Braces
@@ -54,11 +55,7 @@ if (true)
 }
 ```
 
-
-Primitives
-----------
-
-Use the Math methods for rounding.  There are short forms (eg. real|0), but they are less descriptive.
+Code blocks must always be surrounded in braces, even if they are only a single line.
 
 
 Object / Array
@@ -69,7 +66,7 @@ Don't use the Array constructor to create an array containing particular values.
 var x = new Array("this", "is", "wrong");
 var y = ["this", "is", "right"];
 ```
-This is because the Array constructor behaves differently when given a single numeric argument to other situations.
+This is because the Array constructor treats its arguments inconsistently.  A single numeric argument defines the size of the array, while any other kind of argument list provides initial values.
 
 Short declarations can be on a single line, otherwise start a new line for each item.  When split over multiple lines, commas go at the end of the line not the beginning.
 
@@ -78,7 +75,7 @@ Quote keys in Object literals only when required.
 
 Conditionals
 ------------
-It's easy to assume that the behaviour of ```if (x)``` is the same as ```if (x == true)```.  This is NOT TRUE.  There are numerous differences.  In fact, the behaviour is the same as ```if (Boolean(x)) ```, a relationship often referred to as 'truthiness'.
+It's easy to assume that the behaviour of `if (x)` is the same as `if (x == true)`.  This is **NOT TRUE**.  There are numerous differences.  In fact, the behaviour is the same as `if (Boolean(x))`, a relationship often referred to as 'truthiness'.
 
 The truthiness rules are not well known by all developers, and developers relying on them when they were not 100% sure of what types a particular variable can take has caused bugs in our codebase.  Worse, when you look at code that depends on truthiness, it is not possible to know if the developer who wrote that code knew exactly what they were doing or not.
 
@@ -86,7 +83,7 @@ It is better to be explicit in what you check.
 
 ```javascript
 if (bob != null) {
-  // This is explicit.
+  // This is explicit (enough).
   console.log('this code is executed if bob is not null or undefined');
 }
 ```
@@ -110,18 +107,20 @@ Coercion
 --------
 Coercion is bad.  Avoid it. 
 
-* Prefer ```===``` over ```==```
-* Prefer ```!==``` over ```!=```
+* Prefer `===` to `==`
+* Prefer `!==` to `!=`
 
-The only exception is if you wish to check that something is or is not null or undefined, you can check with == null or != null.
+The only exception is if you wish to check that something is or is not null or undefined, you can check with `== null` or `!= null`.
 
-* Prefer ```String(number)``` to ```number + ""```.
-* Prefer ```Number(string)``` to ``` + string ```.
-* Prefer ```Boolean(string)``` to ``` !! string ```.
+* Prefer `String(number)` to `number + ""`.
+* Prefer `Number(string)` to ` + string `.
+* Prefer `Boolean(string)` to ` !! string `.
 
 This does not create a new object, and it makes your code clearer.
 
 It is acceptable to use coercion when appending to a string (e.g. for logging).
+
+Usually use the Math methods for rounding numbers to integers.  There are short forms (eg. `real|0`), but they are less descriptive.
 
 
 Returns
@@ -136,7 +135,7 @@ Guarded returns at the top of a function are fine.  Other than that, balance the
 Naming
 ------
 
-```lowerCamelCase``` for variables and properties.  ```UpperCamelCase``` for classes. ```ALL_CAPS_WITH_UNDERSCORES``` for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
+`lowerCamelCase` for variables and properties.  `UpperCamelCase` for classes. `ALL_CAPS_WITH_UNDERSCORES` for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
 
 Avoid uncommon abbreviations or single character names.  Single character loop counters are acceptable, but always consider if you can be more descriptive.
 
@@ -144,7 +143,7 @@ Avoid meaningless or generic names like 'obj', 'temp', 'data'.  Type names are b
 
 Names should be in a single language for the entire codebase.  For us, this is English (although USAian or UKian spelling variants are acceptable outside of the public API).
 
-We do not use hungarian notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
+We do not mandate Hungarian Notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
 
 Anything that could be referenced from code in another file but that should not be (e.g. private member variables) must indicate this by having their name prepended with an underscore.
 
@@ -168,7 +167,7 @@ function MyClass(arg1, arg2) {
   /* myclass construction code */
 }
 ```
-A constructor should leave the class in a consistent state (i.e. it should establish the Class Invariants).  If it cannot then it must throw an Error.
+A constructor should leave the class in a consistent state (i.e. it should establish the class invariants).  If it cannot then it must throw an Error.
 
 
 Public API
@@ -187,23 +186,23 @@ Throw only objects that are instances of the generic ```Error``` type.
 Custom Error objects are fine, but must inherit from ```Error```, and set the name property.  Where appropriate reuse the standard Error types, e.g. TypeError, RangeError.
 
 
-Hygeine
---------
-
-Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.
-
-Use jsHint with the provided settings.
+General Hygeine
+---------------
 
 Keep your lines, methods, classes and files short (aim for <100 characters, <10 lines, <200 lines).
 
-Write your code to be testable and test it!
+Do not use globals.  Avoid using singletons.
+
+Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.
 
 Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
 
-Do not use globals.
+Use jsHint with the [provided settings](.jshintrc).
 
-Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
+Write your code to be testable and test it! Writing code that receives objects it needs rather than creating them can make the code easier to test.  If you find yourself writing 'new', double check that your code is as testable as it should be.
+
+Avoid nested closures, they quickly become extremely hard to follow.
 
 General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
 
-Avoid nested closures, they quickly become extremely hard to follow.
+Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
