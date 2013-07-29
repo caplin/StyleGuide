@@ -3,9 +3,10 @@ body {
 }
 #content {
   margin: 0px auto;
-  max-width: 900px;
+  max-width: 850px;
   font-size: 14pt;
   font-family: 'Bookman Old Style', serif;
-  line-height: 1.8em;
+  line-height: 1.6em;
+  margin-top: 40px;
   text-align: justify;
 }
