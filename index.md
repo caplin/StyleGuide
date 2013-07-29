@@ -9,6 +9,12 @@ Caplin Style Guide for JavaScript
 
 A javascript style guide drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/)) but favouring explicitness and minimisation of potential for error over terseness.
 
+As with any style guide, some of these rules are debateable. Having a consistent style throughout the codebase is more valuable than getting any one rule 'right' or 'wrong'.
+
+> Break any of these rules sooner than say anything outright barbarous.
+>
+> *Politics and the English Language*, George Orwell
+
 
 Religion
 --------
@@ -96,7 +102,7 @@ if (bob) {
 
 Write what you mean.
 
-If you are completely sure that a variable is a boolean (either it has not be passed into your scope or you have checked it yourself), it is acceptable to leave out the ```=== true```, as to put it in would be barbarous.
+If you are completely sure that a variable is a boolean (either it has not been passed into your scope or you have checked it yourself), it is acceptable to leave out the `=== true`, as to put it in would be barbarous.
 
 Complex conditionals should be assigned to a descriptive variable.
 
