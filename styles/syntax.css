@@ -1,6 +1,12 @@
 .highlight {
   border: 1px solid black;
-  background-color: #ffc;
+  background-color: #f8f8f8;
+}
+
+.highlight pre {
+  line-height: normal;
+  background-color: #f8f8f8;
+  margin: 0;
 }
 
 .javascript .hll { background-color: #ffffcc }
