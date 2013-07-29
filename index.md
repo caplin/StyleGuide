@@ -146,8 +146,8 @@ Returns
 
 Guarded returns at the top of a function are fine.  Other than that, balance the following two considerations:
 
-# Having lots of returns in a function makes it hard to read.
-# Having deeply nested conditional statements makes it hard to read.
+* Having lots of returns in a function makes it hard to read.
+* Having deeply nested conditional statements makes it hard to read.
 
 
 Closures
