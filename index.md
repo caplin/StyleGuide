@@ -13,7 +13,7 @@ Semicolons
 ----------
 Semicolons everywhere they should be.  Failing to put in semicolons can cause bugs.
 
-```
+```javascript
 // DO NOT DO THIS - missing semicolon makes it all go bad.
 
 var myFunc = function() {
@@ -32,14 +32,14 @@ Braces
 Opening braces go on the same line as the statement:
 
 *Right:*
-```
+```javascript
 if (true) {
   console.log('winning');
 }
 ```
 
 *Wrong:*
-```
+```javascript
 if (true)
 {
   console.log('losing');
@@ -62,7 +62,7 @@ We do not use hungarian notation, however collections should be named with plura
 
 Anything that could be referenced from code in another file but that should not be (e.g. private member variables) must indicate this by having their name prepended with an underscore.
 
-```
+```javascript
 funtion MyClass() {
   this.publicMember = 23;
   this._privateMember = 44;
@@ -76,7 +76,7 @@ Object / Array
 --------------
 Don't use the Array constructor to create an array containing particular values. Use the literal form for that.
 
-```
+```javascript
 var x = new Array("this", "is", "wrong");
 var y = ["this", "is", "right"];
 ```
@@ -95,13 +95,13 @@ The truthiness rules are not well known by all developers, and developers relyin
 
 It is better to be explicit in what you check.
 
-```
+```javascript
 if (bob != null) {
   // This is explicit.
   console.log('this code is executed if bob is not null or undefined');
 }
 ```
-```
+```javascript
 if (bob) {
   // This relies on truthiness.
   console.log('this code is executed if bob is not null, undefined, 0, false, NaN or the empty string').
@@ -159,7 +159,7 @@ Constructors
 ------------
 Remember to call your superconstructor in your own constructor. e.g.
 
-```
+```javascript
 function MyClass(arg1, arg2) {
   SuperClass.call(this, arg1);
   /* myclass construction code */
