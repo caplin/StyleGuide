@@ -130,15 +130,10 @@ Guarded returns at the top of a function are fine.  Other than that, balance the
 * Having deeply nested conditional statements makes it hard to read.
 
 
-Closures
--------
-Avoid nested closures, they quickly become extremely hard to follow.
-
-
 Naming
 ------
 
-lowerCamelCase for variables and properties.  UpperCamelCase for classes. ALL_CAPS_WITH_UNDERSCORES for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
+```lowerCamelCase``` for variables and properties.  ```UpperCamelCase``` for classes. ```ALL_CAPS_WITH_UNDERSCORES``` for constants.  Long names are better than wrong or confusing names, but bear in mind that names much over four words become hard to read in camel case.
 
 Avoid uncommon abbreviations or single character names.  Single character loop counters are acceptable, but always consider if you can be more descriptive.
 
@@ -171,13 +166,6 @@ function MyClass(arg1, arg2) {
 }
 ```
 A constructor should leave the class in a consistent state (i.e. it should establish the Class Invariants).  If it cannot then it must throw an Error.
-
-
-Extending Other Objects
------------------------
-General library code must not modify the prototype of other objects.
-
-It is acceptable for application code or shim libraries to do this, but it's a step that should be taken with great trepidation.
 
 
 Public API
@@ -213,3 +201,6 @@ Do not use globals.
 
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
 
+General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
+
+Avoid nested closures, they quickly become extremely hard to follow.
