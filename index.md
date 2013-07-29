@@ -12,7 +12,7 @@ A javascript style guide based on drawing heavily from other style guides (in pa
 
 Religion
 --------
-Tabs not spaces. (Which one to go with doesn't really matter, but a decision has to be made).
+Tabs not spaces.
 
 
 Semicolons
