@@ -3,7 +3,7 @@ body {
 }
 #content {
   margin: 0px auto;
-  width: 800px;
+  max-width: 900px;
   font-size: 14pt;
   font-family: 'Bookman Old Style', serif;
   line-height: 1.8em;
