@@ -17,7 +17,7 @@ Tabs not spaces. So it is written, so shall it be done.
 
 Semicolons
 ----------
-Semicolons everywhere they should be.  Failing to put in semicolons can cause bugs:
+Semicolons after every statement.  Failing to put in semicolons can cause bugs:
 
 ```javascript
 // DO NOT DO THIS - missing semicolon makes it all go bad.
