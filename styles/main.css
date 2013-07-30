@@ -1,5 +1,6 @@
 body {
   background-color: #FDFFCC;
+  counter-reset: section;
 }
 #content {
   margin: 0px auto;
@@ -32,8 +33,28 @@ h1 {
 }
 h2 {
   margin-top: 45px;
+  counter-reset: sub-section;
 }
 
 h1, h2, h3 { 
   text-align: left;
+}
+
+h3 {counter-reset: composite}
+h4 {counter-reset: detail}
+h2:before{
+  counter-increment: section;
+  content: counter(section) " ";
+}
+h3:before{
+  counter-increment: sub-section;
+  content: counter(section) "." counter(sub-section) " ";
+}
+h4:before{
+  counter-increment: composite;
+  content: counter(section) "." counter(sub-section) "." counter(composite) " ";
+}
+h5:before{
+  counter-increment: detail;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";
 }
