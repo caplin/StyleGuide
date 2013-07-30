@@ -17,6 +17,7 @@ As with any style guide, some of these rules are debateable. Having a consistent
 >
 > *Politics and the English Language*, George Orwell
 
+This guide is written in markdown.  The readable version is [here](http://caplin.github.io/StyleGuide/), and the source is in github [here](https://github.com/caplin/StyleGuide).
 
 Religion
 --------
