@@ -74,7 +74,7 @@ var myFunc = function() {
 })();
 ```
 
-This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.
+This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  You can avoid such problems by always starting a line with a ; if you would otherwise have started with a ( or a ++.  It's ugly, but it can avoid errors.
 
 
 Braces
@@ -178,6 +178,34 @@ Complex conditionals should be assigned to a descriptive variable.
 
 A common source of errors occurs when a developer writes a chain of if/else if/else if's and leaves out an else, or they write a bunch of nested ifs, and one of the inner ifs misses an else.  What's worse is that it's difficult to tell from looking at the code afterwards whether the author intended the behaviour or not.  When writing nested if statements, inner if's or run-on ifs should always have else clauses with a comment if they are empty.
 
+*Wrong:*
+
+```javascript
+if (someComplexCondition) {
+  if (someOtherComplexCondition) {
+    doSomething();
+  }
+} else if (anotherConditon) {
+  doAnotherThing();
+}
+```
+
+*Right:*
+
+```javascript
+if (someComplexCondition) {
+  if (someOtherComplexCondition) {
+    doSomething();
+  } else {
+    // no need to do anything here because of X, Y, Z
+  }
+} else if (anotherConditon) {
+  doAnotherThing();
+} else {
+  // no need to do anything here because of W, Q, R.
+}
+```
+
 
 Coercion
 --------
@@ -205,9 +233,9 @@ Functions
 Guarded returns at the top of a function are fine.  Other than that, balance the following two considerations:
 
 * Having lots of returns in a function makes it hard to follow.
-* Having deeply nested conditional statements in a function makes it hard to read.  Anything that shifts your code to the right should be meaningful for that code.
+* Having deeply nested conditional statements in a function makes it hard to read.  Anything that shifts code to the right should be meaningful for that code.
 
-Avoid nested closures, they quickly become extremely hard to follow.
+Avoid nested closures, they quickly become hard to follow.
 
 
 Naming
@@ -245,6 +273,7 @@ function MyClass(arg1, arg2) {
   /* myclass construction code */
 }
 ```
+
 A constructor should leave the class in a consistent state (i.e. it should establish the class invariants).  If it cannot then it must throw an Error.
 
 
@@ -271,7 +300,7 @@ Revision Control
 
 Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.  If there is code commented out and checked in then nobody knows why it's there.
 
-Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
+Write good check-in comments.  Mention the issue title and ID, who worked on the issue and what they did.  If someone is confused by a line of code you wrote, they will look at your check-in comment.  Make it useful.
 
 
 General Hygeine
