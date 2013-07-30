@@ -17,11 +17,19 @@ As with any style guide, some of these rules are debateable. Having a consistent
 >
 > *Politics and the English Language*, George Orwell
 
-This guide is written in markdown.  The readable version is [here](http://caplin.github.io/StyleGuide/), and the source is in github [here](https://github.com/caplin/StyleGuide).
+This guide is written in markdown.  The readable version is [here](http://caplin.github.io/StyleGuide/), and the source is [here](https://github.com/caplin/StyleGuide).
+
 
 Religion
 --------
 Tabs not spaces. So it is written, so let it be done.
+
+
+EcmaScript target
+-----------------
+As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5 (function.bind, Object.create, the array methods, etc are in, getters are setters are not).
+
+General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
 
 
 Semicolons
@@ -219,9 +227,5 @@ Actively look for ways to fail faster.
 Use jsHint with the [provided settings](https://raw.github.com/caplin/StyleGuide/gh-pages/.jshintrc).
 
 Write your code to be testable and test it! Writing code that receives objects it needs rather than creating them can make the code easier to test.  If you find yourself writing 'new', double check that your code is as testable as it should be.
-
-General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
-
-As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5 (function.bind, Object.create, the array methods, etc are in, getters are setters are not).
 
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
