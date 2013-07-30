@@ -27,37 +27,6 @@ Tabs not spaces. So it is written, so let it be done.
 Configuring your editor to show whitespace characters will help you be consistent.  I have their opacity set to 30/255 so that they don't interfere visually.
 
 
-EcmaScript target
------------------
-As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5.
-
-*OK:*
-
-```javascript
-var boundFunction = func.bind(this);
-var x = Object.create(prototypeForX);
-var arr = [1, 2, 3].map(function(x) {return x * 2;});
-
-```
-
-*Wrong (not shimmable):*
-
-```javascript
-var x = {};
-Object.defineProperty(x, 'fred', {
-  get: function() {
-    console.log('fred has been got');
-    return 23;
-  }
-});
-
-```
-
-General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
-
-Using strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope.
-
-
 Semicolons
 ----------
 Semicolons after every statement except control flow ending with curly brackets (if/while/etc).  Failing to put in semicolons can cause bugs:
@@ -303,8 +272,42 @@ Do not check in commented out code.  Remembering old versions of code is what th
 Write good check-in comments.  Mention the issue title and ID, who worked on the issue and what they did.  If someone is confused by a line of code you wrote, they will look at your check-in comment.  Make it useful.
 
 
+Browser Specific Code
+---------------------
+
+Code that must support IE8 is limited to the shimmable subset of ecmascript 5.
+
+*OK (shimmable):*
+
+```javascript
+var boundFunction = func.bind(this);
+var x = Object.create(prototypeForX);
+var arr = [1, 2, 3].map(function(x) {return x * 2;});
+
+```
+
+*Wrong (not shimmable):*
+
+```javascript
+var x = {};
+Object.defineProperty(x, 'fred', {
+  get: function() {
+    console.log('fred has been got');
+    return 23;
+  }
+});
+
+```
+
+General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken carefully.
+
+Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
+
+
 General Hygeine
 ---------------
+
+Strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope.
 
 Keep your lines, methods, classes and files short (aim for <100 characters, <10 lines, <200 lines).
 
@@ -315,5 +318,3 @@ Actively look for ways to fail faster.
 Use jsHint with the [provided settings](https://raw.github.com/caplin/StyleGuide/gh-pages/.jshintrc).
 
 Write your code to be testable and test it! Writing code that receives objects it needs rather than creating them can make the code easier to test.  If you find yourself writing 'new', double check that your code is as testable as it should be.
-
-Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
