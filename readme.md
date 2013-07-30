@@ -24,6 +24,8 @@ Religion
 --------
 Tabs not spaces. So it is written, so let it be done.
 
+Configuring your editor to show whitespace characters will help you be consistent.  I have their opacity set to 30/255 so that they don't interfere visually too much.
+
 
 EcmaScript target
 -----------------
@@ -74,6 +76,12 @@ if (true)
 
 Code blocks must always be surrounded in braces, even if they are only a single line.
 
+*Wrong:*
+
+```javascript
+if (true) console.log('losing');
+```
+
 
 Object / Array
 --------------
@@ -83,9 +91,29 @@ Don't use the Array constructor to create an array containing particular values.
 var x = new Array("this", "is", "wrong");
 var y = ["this", "is", "right"];
 ```
-This is because the Array constructor treats its arguments inconsistently.  A single numeric argument defines the size of the array, while any other kind of argument list provides initial values.
+This is because the Array constructor treats its arguments inconsistently.  A single numeric argument defines the size of the array, while any other kind of argument list provides initial values.  Avoid confusion by always using the literal notation to provide initial array values.
 
 Short declarations can be on a single line, otherwise start a new line for each item.  When split over multiple lines, commas go at the end of the line not the beginning.
+
+*Right:*
+
+```javascript
+var myArray = [
+  'first',
+  'second',
+  'third'
+];
+```
+
+*Wrong:*
+
+```javascript
+var myArray = [
+  'first'
+  ,'second'
+  ,'third'
+];
+```
 
 Quote keys in Object literals only when required.
 
