@@ -1,6 +1,6 @@
 ---
 layout: main
-permalink: index.html
+permalink: /index.html
 title: Caplin Style Guide for Javascript
 ---
 
