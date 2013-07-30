@@ -10,14 +10,14 @@
   line-height: normal;
   background-color: #f8f8f8;
   margin: 0;
-  font-size: 12pt;
-  font-family: "Deja Vu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", monospace;
 }
 
 code {
   margin: 0;
   border: 2px solid #ddd;
   background-color: #f8f8f8;
+  font-size: 12pt;
+  font-family: "Deja Vu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", monospace;
 }
 
 .highlight code {
