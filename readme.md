@@ -1,5 +1,7 @@
 ---
 layout: main
+permalink: index.html
+title: Caplin Style Guide for Javascript
 ---
 
 
