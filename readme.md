@@ -193,6 +193,7 @@ Throw only objects that are instances of the generic `Error` type.
 
 Custom Error objects are fine, but must inherit from `Error`, and set the name property.  Where appropriate reuse the standard Error types, e.g. TypeError, RangeError.
 
+Error messages should include all the kinds of things you might need to debug the issue.  For example, if something is the wrong type, your error message should say what type it is as well as what type it should be.
 
 General Hygeine
 ---------------
@@ -200,6 +201,8 @@ General Hygeine
 Keep your lines, methods, classes and files short (aim for <100 characters, <10 lines, <200 lines).
 
 Do not use globals.  Avoid using singletons.
+
+Actively look for ways to fail faster.
 
 Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.
 
