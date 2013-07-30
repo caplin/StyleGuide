@@ -9,9 +9,9 @@ title: Caplin Style Guide for Javascript
 Caplin Style Guide for JavaScript
 =================================
 
-A javascript style guide drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and [idiomatic.js](https://github.com/rwldrn/idiomatic.js/)) but favouring explicitness and minimisation of potential for error over terseness.
+A javascript style guide drawing heavily from other style guides (in particular [Felix's Node Style Guide](http://nodeguide.com/style.html), and somewhat inspired by [idiomatic.js](https://github.com/rwldrn/idiomatic.js/)) but favouring explicitness and minimisation of potential for error over terseness.
 
-As with any style guide, some of these rules are debateable. Having a consistent style throughout the codebase is more valuable than getting any one rule 'right'.
+As with any style guide, some of these rules are debateable. Having a consistent style throughout the codebase is more valuable than getting any specific rule 'right'.
 
 > Break any of these rules sooner than say anything outright barbarous.
 >
@@ -24,14 +24,37 @@ Religion
 --------
 Tabs not spaces. So it is written, so let it be done.
 
-Configuring your editor to show whitespace characters will help you be consistent.  I have their opacity set to 30/255 so that they don't interfere visually too much.
+Configuring your editor to show whitespace characters will help you be consistent.  I have their opacity set to 30/255 so that they don't interfere visually.
 
 
 EcmaScript target
 -----------------
-As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5 (function.bind, Object.create, the array methods, etc are in, getters are setters are not).
+As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5.
+
+*OK:*
+
+```javascript
+var boundFunction = func.bind(this);
+var x = Object.create(prototypeForX);
+var arr = [1, 2, 3].map(function(x) {return x * 2;});
+
+```
+
+*Wrong (not shimmable):*
+```javascript
+var x = {};
+Object.defineProperty(x, 'fred', {
+  get: function() {
+    console.log('fred has been got');
+    return 23;
+  }
+});
+
+```
 
 General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
+
+Using strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope.
 
 
 Semicolons
@@ -110,21 +133,25 @@ var myArray = [
 ```javascript
 var myArray = [
   'first'
-  ,'second'
-  ,'third'
+  , 'second'
+  , 'third'
 ];
 ```
 
-Quote keys in Object literals only when required.
+Don't leave trailing commas.
+
+Only quote keys in Object literals when required.
 
 
 Conditionals
 ------------
 It's easy to assume that the behaviour of `if (x)` is the same as `if (x == true)`.  This is **NOT TRUE**.  There are numerous differences.  In fact, the behaviour is the same as `if (Boolean(x))`, a relationship often referred to as 'truthiness'.
 
-The truthiness rules are not well known by all developers, and developers relying on them when they were not 100% sure of what types a particular variable can take has caused bugs in our codebase.  Worse, when you look at code that depends on truthiness, it is not possible to know if the developer who wrote that code knew exactly what they were doing or not.
+The truthiness rules are not well known by all developers, and relying on them without being sure of exactly which types may be in the relevant variables leads to bugs.  Worse, the errors can be difficult to track down and when you look at code that depends on truthiness, it is not possible to know if the developer who wrote that code knew exactly what they were doing or not.
 
 It is better to be explicit in what you check.
+
+*OK:*
 
 ```javascript
 if (bob != null) {
@@ -132,6 +159,9 @@ if (bob != null) {
   console.log('this code is executed if bob is not null or undefined');
 }
 ```
+
+*Wrong:*
+
 ```javascript
 if (bob) {
   // This relies on truthiness.
