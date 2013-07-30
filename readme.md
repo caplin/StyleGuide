@@ -41,6 +41,7 @@ var arr = [1, 2, 3].map(function(x) {return x * 2;});
 ```
 
 *Wrong (not shimmable):*
+
 ```javascript
 var x = {};
 Object.defineProperty(x, 'fred', {
