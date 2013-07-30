@@ -132,13 +132,15 @@ It is acceptable to use coercion when appending to a string (e.g. for logging).
 Usually use the Math methods for rounding numbers to integers.  There are short forms (eg. `real|0`), but they are less descriptive.
 
 
-Returns
--------
+Functions
+---------
 
 Guarded returns at the top of a function are fine.  Other than that, balance the following two considerations:
 
-* Having lots of returns in a function makes it hard to read.
-* Having deeply nested conditional statements makes it hard to read.
+* Having lots of returns in a function makes it hard to follow.
+* Having deeply nested conditional statements in a function makes it hard to read.  Anything that shifts your code to the right should be meaningful for that code.
+
+Avoid nested closures, they quickly become extremely hard to follow.
 
 
 Naming
@@ -196,6 +198,15 @@ Custom Error objects are fine, but must inherit from `Error`, and set the name p
 
 Error messages should include all the kinds of things you might need to debug the issue.  For example, if something is the wrong type, your error message should say what type it is as well as what type it should be.
 
+
+Revision Control
+----------------
+
+Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.  If there is code commented out and checked in then nobody knows why it's there.
+
+Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
+
+
 General Hygeine
 ---------------
 
@@ -205,18 +216,12 @@ Do not use globals.  Avoid using singletons.
 
 Actively look for ways to fail faster.
 
-Do not check in commented out code.  Remembering old versions of code is what the revision control system is for.
-
-Write good checkin comments.  Mention the issue title and ID, who worked on the issue and what you did.  If someone is confused by a line of code you wrote, they will look at your check in comment, make it help them.
-
 Use jsHint with the [provided settings](https://raw.github.com/caplin/StyleGuide/gh-pages/.jshintrc).
 
 Write your code to be testable and test it! Writing code that receives objects it needs rather than creating them can make the code easier to test.  If you find yourself writing 'new', double check that your code is as testable as it should be.
 
-Avoid nested closures, they quickly become extremely hard to follow.
-
 General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken with great trepidation.
 
-As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5.
+As long as we support IE8, caplin code is limited to the shimmable subset of ecmascript 5 (function.bind, Object.create, the array methods, etc are in, getters are setters are not).
 
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
