@@ -303,6 +303,9 @@ General library code must not modify the prototype of other objects.  It is acce
 
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
 
+White space
+-----------
+Leading white space characters must be removed. So no tabs on empty lines, no spaces at end of lines, etc. People that have their editors setup to show all white space are annoyed by them, and they removed them which results in hard to read diffs.
 
 General Hygeine
 ---------------
