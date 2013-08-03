@@ -245,6 +245,57 @@ function MyClass(arg1, arg2) {
 
 A constructor should leave the class in a consistent state (i.e. it should establish the class invariants).  If it cannot then it must throw an Error.
 
+Spaces
+------
+Put spaces after:
+* control statements: `if`, `while`, `for`, ...
+* function/class name (or `function`) when declaring them
+* last closing bracket that is followed by a curly opening bracket
+* commas in function arguments list or when calling a function with multiple arguments
+* semi colons in `for` loops
+* commas when declaring multiple variables (preferably put each variable in a new line)
+
+Put spaces around:
+* operators in logical expressions: `&&`, `||`, `===`, `<`, ...
+* assignment operators
+
+Don't use a space:
+* between function name and opening bracket when invoking a function
+
+Right:
+```javascript
+function myFoo (arg1, arg2, arg3) {
+  var bar,
+		i;
+
+	if (arg1 === 'something') {
+		bar = 'baz';
+	} else {
+		bar = 42;
+	}
+
+	for (i = 0; i < arg2; i++) {
+		myBar(i, arg3);
+	}
+};
+```
+
+Wrong:
+```javascript
+function myFoo(arg1,arg2,arg3){
+	var bar,i;
+
+	if(arg1==='something'){
+		bar='baz';
+	}else{
+		bar=42;
+	}
+
+	for(i=0;i<arg2;i++){
+		myBar (i,arg3);
+	}
+};
+```
 
 Public API
 ----------
