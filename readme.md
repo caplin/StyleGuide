@@ -35,11 +35,11 @@ Semicolons after every statement except control flow ending with curly brackets 
 // DO NOT DO THIS - missing semicolon makes it all go bad.
 
 var myFunc = function() {
-  // myFunc definition code codes here.
+	// myFunc definition code codes here.
 }
 
 (function() {
-  // this code should be executed immediately.
+	// this code should be executed immediately.
 })();
 ```
 
@@ -54,7 +54,7 @@ Opening braces go on the same line as the statement:
 
 ```javascript
 if (true) {
-  console.log('winning');
+	console.log('winning');
 }
 ```
 
@@ -63,7 +63,7 @@ if (true) {
 ```javascript
 if (true)
 {
-  console.log('losing');
+	console.log('losing');
 }
 ```
 
@@ -92,9 +92,9 @@ Short declarations can be on a single line, otherwise start a new line for each 
 
 ```javascript
 var myArray = [
-  'first',
-  'second',
-  'third'
+	'first',
+	'second',
+	'third'
 ];
 ```
 
@@ -102,9 +102,9 @@ var myArray = [
 
 ```javascript
 var myArray = [
-  'first'
-  , 'second'
-  , 'third'
+	'first'
+	, 'second'
+	, 'third'
 ];
 ```
 
@@ -125,8 +125,8 @@ It is better to be explicit in what you check.
 
 ```javascript
 if (bob != null) {
-  // This is explicit (enough).
-  console.log('this code is executed if bob is not null or undefined');
+	// This is explicit (enough).
+	console.log('this code is executed if bob is not null or undefined');
 }
 ```
 
@@ -134,8 +134,8 @@ if (bob != null) {
 
 ```javascript
 if (!bob) {
-  // This relies on truthiness.
-  console.log('Executed if bob is null, undefined, 0, false, NaN or the empty string').
+	// This relies on truthiness.
+	console.log('Executed if bob is null, undefined, 0, false, NaN or the empty string').
 }
 ```
 
@@ -151,11 +151,11 @@ A common source of errors occurs when a developer writes a chain of if/else if/e
 
 ```javascript
 if (someComplexCondition) {
-  if (someOtherComplexCondition) {
-    doSomething();
-  }
+	if (someOtherComplexCondition) {
+		doSomething();
+	}
 } else if (anotherConditon) {
-  doAnotherThing();
+	doAnotherThing();
 }
 ```
 
@@ -163,15 +163,15 @@ if (someComplexCondition) {
 
 ```javascript
 if (someComplexCondition) {
-  if (someOtherComplexCondition) {
-    doSomething();
-  } else {
-    // no need to do anything here because of X, Y, Z
-  }
+	if (someOtherComplexCondition) {
+		doSomething();
+	} else {
+		// no need to do anything here because of X, Y, Z
+	}
 } else if (anotherConditon) {
-  doAnotherThing();
+	doAnotherThing();
 } else {
-  // no need to do anything here because of W, Q, R.
+	// no need to do anything here because of W, Q, R.
 }
 ```
 
@@ -224,8 +224,8 @@ Anything that could be referenced from code in another file but that should not 
 
 ```javascript
 funtion MyClass() {
-  this.publicMember = 23;
-  this._privateMember = 44;
+	this.publicMember = 23;
+	this._privateMember = 44;
 }
 ```
 
@@ -238,8 +238,8 @@ Remember to call your superconstructor in your own constructor. e.g.
 
 ```javascript
 function MyClass(arg1, arg2) {
-  SuperClass.call(this, arg1);
-  /* myclass construction code */
+	SuperClass.call(this, arg1);
+	/* myclass construction code */
 }
 ```
 
@@ -342,10 +342,10 @@ var arr = [1, 2, 3].map(function(x) {return x * 2;});
 ```javascript
 var x = {};
 Object.defineProperty(x, 'fred', {
-  get: function() {
-    console.log('fred has been got');
-    return 23;
-  }
+	get: function() {
+		console.log('fred has been got');
+		return 23;
+	}
 });
 
 ```
