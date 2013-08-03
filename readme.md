@@ -261,12 +261,13 @@ Put spaces around:
 
 Don't use a space:
 * between function name and opening bracket when invoking a function
+* between unary operators (`++`, `--`) and the variable they are operating on
 
 Right:
 ```javascript
 function myFoo (arg1, arg2, arg3) {
-  var bar,
-		i;
+	var bar,
+	i;
 
 	if (arg1 === 'something') {
 		bar = 'baz';
@@ -277,6 +278,8 @@ function myFoo (arg1, arg2, arg3) {
 	for (i = 0; i < arg2; i++) {
 		myBar(i, arg3);
 	}
+
+	i++;
 };
 ```
 
@@ -294,6 +297,8 @@ function myFoo(arg1,arg2,arg3){
 	for(i=0;i<arg2;i++){
 		myBar (i,arg3);
 	}
+
+	i ++;
 };
 ```
 
