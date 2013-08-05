@@ -43,7 +43,7 @@ var myFunc = function() {
 })();
 ```
 
-This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  You can avoid such problems by always starting a line with a ; if you would otherwise have started with a ( or a ++.  It's ugly, but it can avoid errors.
+This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  You can avoid such problems by always starting a line with a ; if you would otherwise have started with a (.  It's ugly, but it can avoid errors.
 
 
 Braces
@@ -133,9 +133,9 @@ if (bob != null) {
 *Wrong:*
 
 ```javascript
-if (!bob) {
+if (bob) {
   // This relies on truthiness.
-  console.log('Executed if bob is null, undefined, 0, false, NaN or the empty string').
+  console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string').
 }
 ```
 
@@ -183,17 +183,17 @@ Coercion is bad.  Avoid it.
 * Prefer `===` to `==`
 * Prefer `!==` to `!=`
 
-The only exception is if you wish to check that something is or is not null or undefined, you can check with `== null` or `!= null`.
+When writing code to change the type of a variable
 
 * Prefer `String(number)` to `number + ""`.
-* Prefer `Number(string)` to ` + string `.
-* Prefer `Boolean(string)` to ` !! string `.
+* Prefer `Number(string)` to ` +string `.
+* Prefer `Boolean(string)` to `!!string `.
 
 This does not create a new object, and it makes your code clearer.
 
 It is acceptable to use coercion when appending to a string (e.g. for logging).
 
-Usually use the Math methods for rounding numbers to integers.  There are short forms (eg. `real|0`), but they are less descriptive.
+Usually use the Math methods for rounding numbers to integers (e.g. `Math.floor`).  There are short forms (eg. `real|0`), which may be more performant but they are less descriptive.
 
 
 Functions
@@ -204,7 +204,7 @@ Guarded returns at the top of a function are fine.  Other than that, balance the
 * Having lots of returns in a function makes it hard to follow.
 * Having deeply nested conditional statements in a function makes it hard to read.  Anything that shifts code to the right should be meaningful for that code.
 
-Avoid nested closures, they quickly become hard to follow.
+Avoid nested closures, they quickly become hard to follow.  They can often be replaced with bound calls to methods.
 
 
 Naming
