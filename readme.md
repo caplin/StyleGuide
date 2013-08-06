@@ -249,15 +249,17 @@ Spaces
 ------
 Put spaces after:
 * control statements: `if`, `while`, `for`, ...
-* function/class name (or `function`) when declaring them
 * last closing bracket that is followed by a curly opening bracket
 * commas in function arguments list or when calling a function with multiple arguments
 * semi colons in `for` loops
 * commas when declaring multiple variables (preferably put each variable in a new line)
+* commas when defining array literals
+* colons when defining object literals
 
 Put spaces around:
 * operators in logical expressions: `&&`, `||`, `===`, `<`, ...
 * assignment operators
+* `?` and `:` in ternary expressions
 
 Don't use a space:
 * between function name and opening bracket when invoking a function
@@ -267,6 +269,11 @@ Right:
 ```javascript
 function myFoo (arg1, arg2, arg3) {
 	var bar,
+	arr = [1, 2, 3],
+	obj = {
+		prop1: 'aaa',
+		prop2: 'bbb'
+	},
 	i;
 
 	if (arg1 === 'something') {
@@ -280,6 +287,8 @@ function myFoo (arg1, arg2, arg3) {
 	}
 
 	i++;
+	
+	console.log(i % 2 ? 'yes' : 'no');
 };
 ```
 
@@ -287,6 +296,8 @@ Wrong:
 ```javascript
 function myFoo(arg1,arg2,arg3){
 	var bar,i;
+	var arr=[1,2,3];
+	var obj={prop1:'aaa',prop2:'bbb'};
 
 	if(arg1==='something'){
 		bar='baz';
@@ -299,6 +310,8 @@ function myFoo(arg1,arg2,arg3){
 	}
 
 	i ++;
+	
+	console.log(i%2?'yes':'no');
 };
 ```
 
