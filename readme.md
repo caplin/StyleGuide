@@ -248,6 +248,7 @@ A constructor should leave the class in a consistent state (i.e. it should estab
 Spaces
 ------
 Put spaces after:
+
 * control statements: `if`, `while`, `for`, ...
 * last closing bracket that is followed by a curly opening bracket
 * commas in function arguments list or when calling a function with multiple arguments
@@ -257,17 +258,20 @@ Put spaces after:
 * colons when defining object literals
 
 Put spaces around:
+
 * operators in logical expressions: `&&`, `||`, `===`, `<`, ...
 * assignment operators
 * `?` and `:` in ternary expressions
 
 Don't use a space:
+
 * between function name and opening bracket when invoking a function
 * between unary operators (`++`, `--`) and the variable they are operating on
 
 Trailing white space characters must be removed. No tabs on empty lines, no spaces at end of lines, etc.
 
 Right:
+
 ```javascript
 function myFoo(arg1, arg2, arg3) {
 	var bar,
@@ -295,6 +299,7 @@ function myFoo(arg1, arg2, arg3) {
 ```
 
 Wrong:
+
 ```javascript
 function myFoo (arg1,arg2,arg3){
 	var bar,i;
