@@ -35,11 +35,11 @@ Semicolons after every statement except control flow ending with curly brackets 
 // DO NOT DO THIS - missing semicolon makes it all go bad.
 
 var myFunc = function() {
-  // myFunc definition code codes here.
+	// myFunc definition code codes here.
 }
 
 (function() {
-  // this code should be executed immediately.
+	// this code should be executed immediately.
 })();
 ```
 
@@ -54,7 +54,7 @@ Opening braces go on the same line as the statement:
 
 ```javascript
 if (true) {
-  console.log('winning');
+	console.log('winning');
 }
 ```
 
@@ -63,7 +63,7 @@ if (true) {
 ```javascript
 if (true)
 {
-  console.log('losing');
+	console.log('losing');
 }
 ```
 
@@ -92,9 +92,9 @@ Short declarations can be on a single line, otherwise start a new line for each 
 
 ```javascript
 var myArray = [
-  'first',
-  'second',
-  'third'
+	'first',
+	'second',
+	'third'
 ];
 ```
 
@@ -102,9 +102,9 @@ var myArray = [
 
 ```javascript
 var myArray = [
-  'first'
-  , 'second'
-  , 'third'
+	'first'
+	, 'second'
+	, 'third'
 ];
 ```
 
@@ -124,9 +124,9 @@ It is better to be explicit in what you check.
 *OK:*
 
 ```javascript
-if (bob != null) {
-  // This is explicit (enough).
-  console.log('this code is executed if bob is not null or undefined');
+if (bob !== null) {
+	// This is explicit.
+	console.log('this code is executed if bob is not null.');
 }
 ```
 
@@ -135,7 +135,7 @@ if (bob != null) {
 ```javascript
 if (bob) {
   // This relies on truthiness.
-  console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string').
+  console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string.').
 }
 ```
 
@@ -151,11 +151,11 @@ A common source of errors occurs when a developer writes a chain of if/else if/e
 
 ```javascript
 if (someComplexCondition) {
-  if (someOtherComplexCondition) {
-    doSomething();
-  }
+	if (someOtherComplexCondition) {
+		doSomething();
+	}
 } else if (anotherConditon) {
-  doAnotherThing();
+	doAnotherThing();
 }
 ```
 
@@ -163,15 +163,15 @@ if (someComplexCondition) {
 
 ```javascript
 if (someComplexCondition) {
-  if (someOtherComplexCondition) {
-    doSomething();
-  } else {
-    // no need to do anything here because of X, Y, Z
-  }
+	if (someOtherComplexCondition) {
+		doSomething();
+	} else {
+		// no need to do anything here because of X, Y, Z
+	}
 } else if (anotherConditon) {
-  doAnotherThing();
+	doAnotherThing();
 } else {
-  // no need to do anything here because of W, Q, R.
+	// no need to do anything here because of W, Q, R.
 }
 ```
 
@@ -224,8 +224,8 @@ Anything that could be referenced from code in another file but that should not 
 
 ```javascript
 funtion MyClass() {
-  this.publicMember = 23;
-  this._privateMember = 44;
+	this.publicMember = 23;
+	this._privateMember = 44;
 }
 ```
 
@@ -238,13 +238,84 @@ Remember to call your superconstructor in your own constructor. e.g.
 
 ```javascript
 function MyClass(arg1, arg2) {
-  SuperClass.call(this, arg1);
-  /* myclass construction code */
+	SuperClass.call(this, arg1);
+	/* myclass construction code */
 }
 ```
 
 A constructor should leave the class in a consistent state (i.e. it should establish the class invariants).  If it cannot then it must throw an Error.
 
+Spaces
+------
+Put spaces after:
+* control statements: `if`, `while`, `for`, ...
+* last closing bracket that is followed by a curly opening bracket
+* commas in function arguments list or when calling a function with multiple arguments
+* semi colons in `for` loops
+* commas when declaring multiple variables (preferably put each variable in a new line)
+* commas when defining array literals
+* colons when defining object literals
+
+Put spaces around:
+* operators in logical expressions: `&&`, `||`, `===`, `<`, ...
+* assignment operators
+* `?` and `:` in ternary expressions
+
+Don't use a space:
+* between function name and opening bracket when invoking a function
+* between unary operators (`++`, `--`) and the variable they are operating on
+
+Trailing white space characters must be removed. No tabs on empty lines, no spaces at end of lines, etc.
+
+Right:
+```javascript
+function myFoo(arg1, arg2, arg3) {
+	var bar,
+	arr = [1, 2, 3],
+	obj = {
+		prop1: 'aaa',
+		prop2: 'bbb'
+	},
+	i;
+
+	if (arg1 === 'something') {
+		bar = 'baz';
+	} else {
+		bar = 42;
+	}
+
+	for (i = 0; i < arg2; i++) {
+		myBar(i, arg3);
+	}
+
+	i++;
+	
+	console.log(i % 2 ? 'yes' : 'no');
+};
+```
+
+Wrong:
+```javascript
+function myFoo (arg1,arg2,arg3){
+	var bar,i;
+	var arr=[1,2,3];
+	var obj={prop1:'aaa',prop2:'bbb'};
+
+	if(arg1==='something'){
+		bar='baz';
+	}else{
+		bar=42;
+	}
+
+	for(i=0;i<arg2;i++){
+		myBar (i,arg3);
+	}
+
+	i ++;
+	
+	console.log(i%2?'yes':'no');
+};
+```
 
 Public API
 ----------
@@ -291,10 +362,10 @@ var arr = [1, 2, 3].map(function(x) {return x * 2;});
 ```javascript
 var x = {};
 Object.defineProperty(x, 'fred', {
-  get: function() {
-    console.log('fred has been got');
-    return 23;
-  }
+	get: function() {
+		console.log('fred has been got');
+		return 23;
+	}
 });
 
 ```
@@ -302,10 +373,6 @@ Object.defineProperty(x, 'fred', {
 General library code must not modify the prototype of other objects.  It is acceptable for application code or shim libraries to do this, but it is a step that should be taken carefully.
 
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
-
-White space
------------
-Trailing white space characters must be removed. No tabs on empty lines, no spaces at end of lines, etc. People that have their editors setup to show all white space are annoyed by them, and they removed them which results in hard to read diffs.
 
 
 General Hygeine
