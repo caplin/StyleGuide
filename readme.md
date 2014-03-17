@@ -193,7 +193,7 @@ This does not create a new object, and it makes your code clearer.
 
 It is acceptable to use coercion when appending to a string (e.g. for logging).
 
-Usually use the Math methods for rounding numbers to integers (e.g. `Math.floor`).  There are short forms (eg. `real|0`), which may be more performant but they are less descriptive.
+Usually use the Math methods for rounding numbers to integers (e.g. `Math.floor`).  There are short forms (eg. `real|0`), which may be more performant but they are less descriptive and do the wrong thing with large numbers.
 
 
 Functions
