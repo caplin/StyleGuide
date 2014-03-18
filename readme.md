@@ -218,7 +218,7 @@ Avoid meaningless or generic names like 'obj', 'temp', 'data'.  Type names are b
 
 Names should be in a single language for the entire codebase.  For us, this is English (although USAian or UKian spelling variants are acceptable outside of the public API).
 
-We do not mandate Hungarian Notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
+We discourage Hungarian Notation, however collections should be named with plural forms and if something is a boolean, it should be obvious from the name (e.g. isSelected).  Clearly indicating variables containing DOM elements or regexes can help keep code clean too.
 
 Anything that could be referenced from code in another file but that should not be (e.g. private member variables) must indicate this by having their name prepended with an underscore.
 
@@ -385,7 +385,9 @@ Prefer feature detection over browser detection.  Wheverever possible, keep code
 General Hygeine
 ---------------
 
-Strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope.
+Strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope. If you wish to have classes in strict mode and not leak it into the global scope the recommended approach is to use an IIFE.
+
+Do not use the single var pattern, use a var for each variable, [reasoning is provided here.](http://danielhough.co.uk/blog/single-var-pattern-rant/)
 
 Keep your lines, methods, classes and files short (aim for <100 characters, <10 lines, <200 lines).
 
