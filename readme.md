@@ -81,8 +81,8 @@ Object / Array
 Don't use the Array constructor to create an array containing particular values. Use the literal form for that.
 
 ```javascript
-var x = new Array("this", "is", "wrong");
-var y = ["this", "is", "right"];
+var x = new Array('this', 'is', 'wrong');
+var y = ['this', 'is', 'right'];
 ```
 This is because the Array constructor treats its arguments inconsistently.  A single numeric argument defines the size of the array, while any other kind of argument list provides initial values.  Avoid confusion by always using the literal notation to provide initial array values.
 
@@ -185,7 +185,7 @@ Coercion is bad.  Avoid it.
 
 When writing code to change the type of a variable
 
-* Prefer `String(number)` to `number + ""`.
+* Prefer `String(number)` to `number + ''`.
 * Prefer `Number(string)` to ` +string `.
 * Prefer `Boolean(string)` to `!!string `.
 
