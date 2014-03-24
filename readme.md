@@ -75,6 +75,11 @@ Code blocks must always be surrounded in braces, even if they are only a single 
 if (true) console.log('losing');
 ```
 
+Quotes
+------
+Use single quotes instead of double quotes. You can use double quotes if the string will itself contain single quotes, so you can avoid escaping them.
+Reasons for single quotes: less effort to type them and they have less visual clutter.
+
 
 Object / Array
 --------------
