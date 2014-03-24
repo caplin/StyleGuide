@@ -382,7 +382,7 @@ General library code must not modify the prototype of other objects.  It is acce
 Prefer feature detection over browser detection.  Wheverever possible, keep code that depends on the browser (e.g. uses the DOM or host objects not common to other js environments) separate from pure javascript.
 
 
-General Hygeine
+General Hygiene
 ---------------
 
 Strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope. If you wish to have classes in strict mode and not leak it into the global scope the recommended approach is to use an IIFE.
