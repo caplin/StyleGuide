@@ -278,11 +278,11 @@ Right:
 function myFoo(arg1, arg2, arg3) {
 	var bar;
 	var arr = [1, 2, 3],
-	obj = {
-		prop1: 'aaa',
-		prop2: 'bbb'
-	},
-	i;
+		obj = {
+			prop1: 'aaa',
+			prop2: 'bbb'
+		},
+		i;
 
 	if (arg1 === 'something') {
 		bar = 'baz';
