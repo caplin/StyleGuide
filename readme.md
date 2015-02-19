@@ -139,8 +139,8 @@ if (bob !== null) {
 
 ```javascript
 if (bob) {
-  // This relies on truthiness.
-  console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string.').
+	// This relies on truthiness.
+	console.log('Executed if bob is not null, undefined, 0, false, NaN or the empty string.').
 }
 ```
 
@@ -183,7 +183,7 @@ if (someComplexCondition) {
 
 Coercion
 --------
-Coercion is bad.  Avoid it. 
+Coercion is bad.  Avoid it.
 
 * Prefer `===` to `==`
 * Prefer `!==` to `!=`
@@ -236,6 +236,18 @@ funtion MyClass() {
 
 If your method has a name beginning with 'get', it should not usually modify any state.  An exception is for values that are lazily initialised.
 
+Use Function Declaration not Function Expressions, i.e.
+
+```javascript
+// Good
+funtion myFunc() {
+}
+
+// Bad
+var myFunc = function() {};
+```
+
+Reasoning is for consistency and named functions show up in stack traces with their names (although newer engines are able to name anonymous functions).
 
 Constructors
 ------------
@@ -300,7 +312,7 @@ function myFoo(arg1, arg2, arg3) {
 	}
 
 	i++;
-	
+
 	console.log(i % 2 ? 'yes' : 'no');
 };
 ```
@@ -324,7 +336,7 @@ function myFoo (arg1,arg2,arg3){
 	}
 
 	i ++;
-	
+
 	console.log(i%2?'yes':'no');
 };
 ```
