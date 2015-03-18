@@ -402,7 +402,7 @@ Prefer feature detection over browser detection.  Wheverever possible, keep code
 General Hygiene
 ---------------
 
-Strict mode is encouraged.  You do this by putting `"use strict";` at the top of your scope. If you wish to have classes in strict mode and not leak it into the global scope the recommended approach is to use an IIFE.
+Strict mode is encouraged.  You do this by putting `'use strict';` at the top of your scope. If you wish to have classes in strict mode and not leak it into the global scope the recommended approach is to use an IIFE.
 
 Do not use the single var pattern, use a var for each variable, [reasoning is provided here.](http://danielhough.co.uk/blog/single-var-pattern-rant/)
 
