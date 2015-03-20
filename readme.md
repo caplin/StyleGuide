@@ -58,26 +58,6 @@ var example = function () {}; example();
 var example = function () {} example();
 ```
 
-It's true ASI happens on newlines but... DON'T reply on ASI for newlines!
-
-```
-// Working
-a = b = c = 1
-a ++
-b --
-c
-console.log(a, b, c); // 2 0 1
-
-// Not working: unexpected output
-a = b = c = 1
-a
-++ b
--- c
-console.log(a, b, c); // 1 2 0
-```
-
-ASI also adds a semicolon after any `++` or `--`!
-
 Braces
 ------
 Opening braces go on the same line as the statement:
