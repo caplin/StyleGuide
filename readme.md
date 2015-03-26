@@ -29,22 +29,34 @@ Configuring your editor to show whitespace characters will help you be consisten
 
 Semicolons
 ----------
-Semicolons after every statement except control flow ending with curly brackets (if/while/etc).  Failing to put in semicolons can cause bugs:
+Semicolons after **every** statement except:
+
+- Control flow ending with curly brackets (if/while/etc).
+- Function Declarations - Function Expressions DO require a trailing semicolon!
+
+Failing to understand JavaScript's ASI (automatic semicolon insertion) can cause bugs (*note that when code is concatenated, you don't always have control over what is above you*):
 
 ```javascript
-// DO NOT DO THIS - missing semicolon makes it all go bad.
+// Working Function Declaration
+// ASI happens after parsing the token "}"
+// The same behaviour exists for the flow control statements, therefore semicolon is not necessary
+// (but example() should be on a new line!)
+function example () {
+    console.log('test');
+} example();
 
-var myFunc = function() {
-	// myFunc definition code codes here.
-}
+// Not working Function Declaration: Throws Syntax Error
+// ASI does not happen after ")"
+(function example () {
+    console.log('test')
+})() example();
 
-(function() {
-	// this code should be executed immediately.
-})();
+// Working Function Expression
+var example = function () {}; example();
+
+// Not working Function Expression: Throws Syntax Error
+var example = function () {} example();
 ```
-
-This piece of code uses an idiom for immediately executed functions.  However it fails badly because of the lack of a semicolon after myFunc (and note that when code is concatenated, you don't always have control over what is above you).  myFunc will be executed immediately, passing the following function as a disregarded parameter, then the result is considered to be a function and attempted to be invoked.  You can avoid such problems by always starting a line with a ; if you would otherwise have started with a (.  It's ugly, but it can avoid errors.
-
 
 Braces
 ------
