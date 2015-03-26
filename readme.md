@@ -41,21 +41,21 @@ Failing to understand JavaScript's ASI (automatic semicolon insertion) can cause
 // ASI happens after parsing the token "}"
 // The same behaviour exists for the flow control statements, therefore semicolon is not necessary
 // (but example() should be on a new line!)
-function example () {
+function example() {
     console.log('test');
 } example();
 
 // Not working Function Declaration: Throws Syntax Error
 // ASI does not happen after ")"
-(function example () {
+(function example() {
     console.log('test')
-})() example();
+}()) example();
 
 // Working Function Expression
-var example = function () {}; example();
+var example = function() {}; example();
 
 // Not working Function Expression: Throws Syntax Error
-var example = function () {} example();
+var example = function() {} example();
 ```
 
 Braces
